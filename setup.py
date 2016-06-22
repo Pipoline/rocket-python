@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 
 setup(name='rocket-python',
-      version='0.1',
+      version='1.0',
       description="RocketChat API with Python",
       long_description=open("README.md", "r").read(),
       classifiers=[
@@ -24,6 +24,6 @@ setup(name='rocket-python',
       include_package_data=True,
       zip_safe=False,
       install_requires=[
-          'requests==2.0.0,<3.0'
+          'requests>=2.0.0,<3.0'
       ]
     )
