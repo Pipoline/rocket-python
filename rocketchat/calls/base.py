@@ -1,0 +1,3 @@
+class RocketChatBase(object):
+    pass
+    
