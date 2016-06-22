@@ -6,7 +6,7 @@ setup(name='rocket-python',
       description="RocketChat API with Python",
       long_description=open("README.md", "r").read(),
       classifiers=[
-          "Development Status :: 5 - Production/Stable",
+          "Development Status :: 4 - Beta",
           "Intended Audience :: Developers",
           "Natural Language :: English",
           "Operating System :: OS Independent",
