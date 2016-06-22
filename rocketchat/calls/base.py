@@ -9,11 +9,38 @@ logger = logging.getLogger(__name__)
 class RocketChatBase(object):
     settings = None
     endpoint = None
-    headers = None
+    headers = {}
     method = 'get'
+    auth_token = None
+    auth_user_id = None
 
     def __init__(self, settings=None, *args, **kwargs):
         self.settings = settings
+
+        # Prepare for a call by fetching an Auth Token
+        self.set_auth_token()
+        self.set_auth_headers()
+
+    def set_auth_token(self):
+        url = '{domain}/api/login'.format(
+            domain=self.settings['domain']
+        )
+        response = requests.post(url,
+                                 data={'user': self.settings['username'],
+                                       'password': self.settings['password']})
+
+        self.auth_token = response.json()['data']['authToken']
+        self.auth_user_id = response.json()['data']['userId']
+
+    def set_auth_headers(self):
+        self.headers['X-Auth-Token'] = self.auth_token
+        self.headers['X-User-Id'] = self.auth_user_id
+
+    def logoff(self):
+        url = '{domain}/api/logout'.format(
+            domain=self.settings['domain']
+        )
+        requests.get(url, headers=self.headers)
 
     def post_response(self, result):
         return result
@@ -47,14 +74,17 @@ class RocketChatBase(object):
         """
 
         timeout = kwargs.get('timeout', None)
+        url = '{domain}{endpoint}'.format(
+            domain=self.settings['domain'],
+            endpoint=self.build_endpoint(**kwargs)
+        )
 
-
-        result = requests.request(method=self.method, url=self.build_endpoint(**kwargs),
+        result = requests.request(method=self.method, url=url,
                                   data=self.build_payload(**kwargs),
                                   headers=self.headers, timeout=timeout)
 
         request_data = {
-            'url': self.build_endpoint(**kwargs),
+            'url': url,
             'method': self.method,
             'payload': self.build_payload(**kwargs),
             'headers': self.headers,
@@ -65,6 +95,7 @@ class RocketChatBase(object):
         ))
 
         result.raise_for_status()
+        self.logoff()
 
         try:
             logger.debug('API Response - {data}'.format(
@@ -79,6 +110,6 @@ class RocketChatBase(object):
             raise e
 
 
-class RESTfulPostBase(RocketChatBase):
+class PostMixin(object):
     method = 'post'
 

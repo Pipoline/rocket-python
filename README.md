@@ -1,6 +1,6 @@
 #### RocketChat API
 
-API wrapper for the [Rocket chat API](https://rocket.chat/docs/developer-guides/rest-api/)
+Python API wrapper for the [Rocket chat API](https://rocket.chat/docs/developer-guides/rest-api/)
 
 #### Usage
 

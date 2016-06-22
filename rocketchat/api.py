@@ -8,13 +8,11 @@ class RocketChatAPI(object):
         if settings:
             self.settings = settings
         else:
-            raise NotImplementedError('You must set ROCKETCHAT_API_SETTINGS')
+            raise NotImplementedError('You must pass in settings for RocketChat')
 
-    def send_message(self, message, room, **kwargs):
-        return SendMessage().call()
-
-    def create_channel(self):
-        pass
-
-    def get_public_rooms(self):
-        pass
+    def send_message(self, message, room_id, **kwargs):
+        return SendMessage(settings=self.settings, **kwargs).call(
+            message=message,
+            room_id=room_id,
+            **kwargs
+        )
