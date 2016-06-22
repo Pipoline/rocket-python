@@ -2,5 +2,6 @@ from rocketchat.calls.base import RocketChatBase
 
 
 class SendMessage(RocketChatBase):
-    pass
-    
+
+    def build_payload(self, **kwargs):
+        pass
