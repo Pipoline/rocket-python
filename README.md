@@ -2,6 +2,10 @@
 
 Python API wrapper for the [Rocket chat API](https://rocket.chat/docs/developer-guides/rest-api/)
 
+#### Install
+
+    pip install rocket-python
+
 #### Usage
 
 Initialize the client with a username and password.  This user *must* have Admin privs::
@@ -10,7 +14,6 @@ Initialize the client with a username and password.  This user *must* have Admin
     
     api = RocketChatAPI(settings={'username': 'someuser', 'password': 'somepassword',
                                   'domain': 'https://myrockethchatdomain.com'})
-                                                          
 
 #### Supported Calls
 
