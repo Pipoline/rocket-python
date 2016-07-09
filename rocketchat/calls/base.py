@@ -112,4 +112,3 @@ class RocketChatBase(object):
 
 class PostMixin(object):
     method = 'post'
-

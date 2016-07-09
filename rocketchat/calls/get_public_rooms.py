@@ -13,7 +13,7 @@ class GetPublicRooms(RocketChatBase):
 
     def post_response(self, result):
         rooms = []
-        
+
         try:
             _rooms = result.get('rooms')
 
