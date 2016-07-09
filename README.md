@@ -22,7 +22,7 @@ users.  If you need a call, open an issue or send a pull request.
 
 #### Running Tests
 
-    py.test tests
+    py.test tests rocketchat
 
 ##### Sending a message
 
