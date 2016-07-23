@@ -2,11 +2,11 @@ from setuptools import setup, find_packages
 
 
 setup(name='rocket-python',
-      version='1.0',
+      version='1.1.0',
       description="RocketChat API with Python",
       long_description=open("README.md", "r").read(),
       classifiers=[
-          "Development Status :: 4 - Beta",
+          "Development Status :: 5 - Production/Stable",
           "Intended Audience :: Developers",
           "Natural Language :: English",
           "Operating System :: OS Independent",
