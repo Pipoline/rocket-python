@@ -22,7 +22,7 @@ class RocketChatBase(object):
         self.set_auth_headers()
 
     def set_auth_token(self):
-        url = '{domain}/api/login'.format(
+        url = '{domain}/api/v1/login'.format(
             domain=self.settings['domain']
         )
         response = requests.post(url,
@@ -37,7 +37,7 @@ class RocketChatBase(object):
         self.headers['X-User-Id'] = self.auth_user_id
 
     def logoff(self):
-        url = '{domain}/api/logout'.format(
+        url = '{domain}/api/v1/logout'.format(
             domain=self.settings['domain']
         )
         requests.get(url, headers=self.headers)

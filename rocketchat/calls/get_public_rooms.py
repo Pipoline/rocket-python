@@ -6,7 +6,7 @@ logger = logging.getLogger(__name__)
 
 
 class GetPublicRooms(RocketChatBase):
-    endpoint = '/api/publicRooms'
+    endpoint = '/api/v1/channels.list'
 
     def build_endpoint(self):
         return self.endpoint
@@ -15,7 +15,7 @@ class GetPublicRooms(RocketChatBase):
         rooms = []
 
         try:
-            _rooms = result.get('rooms')
+            _rooms = result.get('channels')
 
             for room in _rooms:
                 room_dict = {}
