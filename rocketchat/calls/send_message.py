@@ -2,12 +2,10 @@ from rocketchat.calls.base import PostMixin, RocketChatBase
 
 
 class SendMessage(PostMixin, RocketChatBase):
-    endpoint = '/api/rooms/{room_id}/send'
+    endpoint = '/api/v1/chat.postMessage'
 
     def build_endpoint(self, **kwargs):
-        return self.endpoint.format(
-            room_id=kwargs.get('room_id')
-        )
+        return self.endpoint
 
     def build_payload(self, **kwargs):
-        return {'msg': kwargs.get('message')}
+        return {'text': kwargs.get('message'), 'roomId': kwargs.get('room_id')}
