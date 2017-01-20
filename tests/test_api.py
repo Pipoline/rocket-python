@@ -27,8 +27,8 @@ class SendMessageTestCase(APITestCase, unittest.TestCase):
 
         send_message = SendMessage(settings=self.settings)
 
-        self.assertEqual(send_message.build_payload(message='Test message'),
-                         {'msg': 'Test message'})
+        self.assertEqual(send_message.build_payload(message='Test message', room_id="#general"),
+                         {'roomId': '#general', 'text': 'Test message'})
 
     @mock.patch('rocketchat.calls.base.RocketChatBase.set_auth_token')
     @mock.patch('rocketchat.calls.base.RocketChatBase.set_auth_headers')
