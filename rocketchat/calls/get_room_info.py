@@ -6,7 +6,7 @@ logger = logging.getLogger(__name__)
 
 
 class GetRoomInfo(RocketChatBase):
-    endpoint = 'api/v1/channels.info'
+    endpoint = '/api/v1/channels.info'
 
     def build_endpoint(self, **kwargs):
         return '{endpoint}?roomId={room_id}'.format(

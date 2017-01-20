@@ -35,4 +35,7 @@ class RocketChatAPI(object):
         :param kwargs:
         :return:
         """
-        return GetRoomInfo(settings=self.settings, **kwargs).call(**kwargs)
+        return GetRoomInfo(settings=self.settings, **kwargs).call(
+            room_id=room_id,
+            **kwargs
+        )

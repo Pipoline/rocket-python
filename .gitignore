@@ -91,3 +91,4 @@ ENV/
 
 .vagrant/
 Vagrantfile
+test_dev.py
