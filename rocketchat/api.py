@@ -30,6 +30,7 @@ class RocketChatAPI(object):
 
     def get_room_info(self, room_id, **kwargs):
         """
+        Get various information about a specific channel/room
 
         :param room_id:
         :param kwargs:
