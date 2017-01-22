@@ -1,6 +1,7 @@
-from rocketchat.calls.send_message import SendMessage
-from rocketchat.calls.get_public_rooms import GetPublicRooms
-from rocketchat.calls.get_room_info import GetRoomInfo
+from rocketchat.calls.chat.send_message import SendMessage
+from rocketchat.calls.channels.get_public_rooms import GetPublicRooms
+from rocketchat.calls.channels.get_room_info import GetRoomInfo
+from rocketchat.calls.auth.get_me import GetMe
 
 
 class RocketChatAPI(object):
@@ -40,3 +41,7 @@ class RocketChatAPI(object):
             room_id=room_id,
             **kwargs
         )
+
+    def get_my_info(self, **kwargs):
+
+        return GetMe(settings=self.settings, **kwargs).call(**kwargs)

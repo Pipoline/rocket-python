@@ -21,3 +21,20 @@ GET_USERS_TEST = {
   },
   "success": 'true'
 }
+
+GET_ME_TEST = {
+  "_id": "aobEdbYhXfu5hkeqG",
+  "name": "Example User",
+  "emails": [
+    {
+      "address": "example@example.com",
+      "verified": 'true'
+    }
+  ],
+  "status": "offline",
+  "statusConnection": "offline",
+  "username": "example",
+  "utcOffset": 0,
+  "active": 'true',
+  "success": 'true'
+}
