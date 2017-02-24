@@ -1,6 +1,7 @@
 from rocketchat.calls.chat.send_message import SendMessage
 from rocketchat.calls.channels.get_public_rooms import GetPublicRooms
 from rocketchat.calls.channels.get_room_info import GetRoomInfo
+from rocketchat.calls.channels.get_history import GetRoomHistory
 from rocketchat.calls.auth.get_me import GetMe
 
 
@@ -42,6 +43,21 @@ class RocketChatAPI(object):
             **kwargs
         )
 
+    def get_room_history(self, room_id, oldest = None,**kwargs):
+        """
+        Get various history of specific channel/room
+
+        :param room_id:
+        :param kwargs:
+        :return:
+        """
+        return GetRoomHistory(settings=self.settings, **kwargs).call(
+            room_id=room_id,
+            oldest=oldest,
+            **kwargs
+        )
+
+    
     def get_my_info(self, **kwargs):
 
         return GetMe(settings=self.settings, **kwargs).call(**kwargs)
