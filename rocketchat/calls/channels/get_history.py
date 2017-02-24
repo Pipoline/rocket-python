@@ -9,7 +9,7 @@ class GetRoomHistory(RocketChatBase):
     endpoint = '/api/v1/channels.history'
 
     def build_endpoint(self, **kwargs):
-        if kwargs.has_key('oldest'):
+        if 'oldest' in kwargs:
             return '{endpoint}?roomId={room_id}&oldest={oldest}'.format(
                 endpoint=self.endpoint,
                 oldest=kwargs.get('oldest'),
