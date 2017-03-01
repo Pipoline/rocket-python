@@ -43,7 +43,7 @@ class RocketChatAPI(object):
             **kwargs
         )
 
-    def get_room_history(self, room_id, oldest = None,**kwargs):
+    def get_room_history(self, room_id, oldest=None, **kwargs):
         """
         Get various history of specific channel/room
 
@@ -57,7 +57,6 @@ class RocketChatAPI(object):
             **kwargs
         )
 
-    
     def get_my_info(self, **kwargs):
 
         return GetMe(settings=self.settings, **kwargs).call(**kwargs)
