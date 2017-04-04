@@ -16,15 +16,16 @@ Initialize the client with a username and password.  This user *must* have Admin
                                   'domain': 'https://myrockethchatdomain.com'})
 
 ##### Available Calls
-api.send_message('message', 'room_id')
-api.get_private_rooms()
-api.get_private_room_history('room_id', oldest=date)
-api.get_public_rooms()
-api.get_room_info('room_id')
-api.get_private_room_info('room_id')
-api.get_room_history('room_id')
-api.get_my_info()
-check api.oy for more.
+    api.send_message('message', 'room_id')
+    api.get_private_rooms()
+    api.get_private_room_history('room_id', oldest=date)
+    api.get_public_rooms()
+    api.get_room_info('room_id')
+    api.get_private_room_info('room_id')
+    api.get_room_history('room_id')
+    api.get_my_info()
+
+check /rocketchat/calls/api.py for more.
 
 #### Running Tests
 
