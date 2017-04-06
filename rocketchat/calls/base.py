@@ -47,8 +47,9 @@ class RocketChatBase(object):
 
     def build_endpoint(self, **kwargs):
         """
-        Build the endpoint for the user given some **kwargs
+        Build the endpoint for the user given some kwargs
         from the initial calling.
+
         :return:
         """
 

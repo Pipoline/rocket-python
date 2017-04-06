@@ -9,7 +9,6 @@ Introduction
 Rocket Python is a Python 2 and 3 library to access the `REST API <https://rocket.chat/docs/developer-guides/rest-api/>`__ in RocketChat instances.  The goal
 is to implement the entire REST API provided by `RocketChat <https://rocket.chat>`__.
 
-
 Installation
 ------------
 
@@ -25,7 +24,24 @@ You'll need to create an instance of the Rocket API by logging in::
     'domain': 'https://myrockethchatdomain.com'})
 
 
-Licensing
----------
+Main API Documentation
+----------------------
+
+.. toctree::
+   :maxdepth: 1
+
+   rocketchat
+
+Detailed Module Docs
+--------------------
 
 
+.. toctree::
+   :maxdepth: 1
+
+
+   rocketchat.calls.auth
+   rocketchat.calls.channels
+   rocketchat.calls.chat
+   rocketchat.calls
+   license
