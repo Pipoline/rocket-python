@@ -2,6 +2,8 @@
 
 Python API wrapper for the [Rocket chat API](https://rocket.chat/docs/developer-guides/rest-api)
 
+[Documentation](http://rocket-python.readthedocs.io/en/latest/)
+
 #### Install
 
     pip install rocket-python

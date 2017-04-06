@@ -42,6 +42,7 @@ Detailed Module Docs
 
    rocketchat.calls.auth
    rocketchat.calls.channels
+   rocketchat.calls.groups
    rocketchat.calls.chat
    rocketchat.calls
    license
