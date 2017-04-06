@@ -92,3 +92,5 @@ ENV/
 .vagrant/
 Vagrantfile
 test_dev.py
+
+.DS_Store
