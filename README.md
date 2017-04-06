@@ -15,10 +15,17 @@ Initialize the client with a username and password.  This user *must* have Admin
     api = RocketChatAPI(settings={'username': 'someuser', 'password': 'somepassword',
                                   'domain': 'https://myrockethchatdomain.com'})
 
-#### Supported Calls
+##### Available Calls
+    api.send_message('message', 'room_id')
+    api.get_private_rooms()
+    api.get_private_room_history('room_id', oldest=date)
+    api.get_public_rooms()
+    api.get_room_info('room_id')
+    api.get_private_room_info('room_id')
+    api.get_room_history('room_id')
+    api.get_my_info()
 
-Only a few calls exist within the API, and I am only adding them as they are needed by
-users.  If you need a call, open an issue or send a pull request.
+check /rocketchat/calls/api.py for more.
 
 #### Running Tests
 

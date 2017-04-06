@@ -1,7 +1,10 @@
 from rocketchat.calls.chat.send_message import SendMessage
 from rocketchat.calls.channels.get_public_rooms import GetPublicRooms
+from rocketchat.calls.groups.get_private_rooms import GetPrivateRooms
 from rocketchat.calls.channels.get_room_info import GetRoomInfo
+from rocketchat.calls.groups.get_private_room_info import GetPrivateRoomInfo
 from rocketchat.calls.channels.get_history import GetRoomHistory
+from rocketchat.calls.groups.get_private_room_history import GetPrivateRoomHistory
 from rocketchat.calls.auth.get_me import GetMe
 
 
@@ -24,6 +27,26 @@ class RocketChatAPI(object):
             **kwargs
         )
 
+    def get_private_rooms(self, **kwargs):
+        """
+        Get a listing of all private rooms with their names and IDs
+        """
+        return GetPrivateRooms(settings=self.settings, **kwargs).call(**kwargs)
+
+    def get_private_room_history(self, room_id, oldest=None, **kwargs):
+        """
+        Get various history of specific private group in this case private
+
+        :param room_id:
+        :param kwargs:
+        :return:
+        """
+        return GetPrivateRoomHistory(settings=self.settings, **kwargs).call(
+            room_id=room_id,
+            oldest=oldest,
+            **kwargs
+        )
+
     def get_public_rooms(self, **kwargs):
         """
         Get a listing of all public rooms with their names and IDs
@@ -39,6 +62,19 @@ class RocketChatAPI(object):
         :return:
         """
         return GetRoomInfo(settings=self.settings, **kwargs).call(
+            room_id=room_id,
+            **kwargs
+        )
+
+    def get_private_room_info(self, room_id, **kwargs):
+        """
+        Get various information about a specific private group
+
+        :param room_id:
+        :param kwargs:
+        :return:
+        """
+        return GetPrivateRoomInfo(settings=self.settings, **kwargs).call(
             room_id=room_id,
             **kwargs
         )
