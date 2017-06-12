@@ -87,9 +87,7 @@ class RocketChatAPI(object):
         latest=datetime.now(),
         inclusive=False,
         count=20,
-        unreads=False,
-        **kwargs
-        ):
+        unreads=False, **kwargs):
         """
         Get various history of specific channel/room
 
