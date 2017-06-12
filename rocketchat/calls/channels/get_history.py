@@ -8,7 +8,8 @@ logger = logging.getLogger(__name__)
 class GetRoomHistory(RocketChatBase):
     endpoint = '/api/v1/channels.history'          
     def build_endpoint (self, **kwargs):
-        return '{endpoint}?roomId={room_id}&oldest={oldest}&inclusive={inclusive}&count={count}&unreads={unreads}&latest={latest}'.format(
+        return '{endpoint}?roomId={room_id}&oldest={oldest}&inclusive={inclusive}'\
+                '&count={count}&unreads={unreads}&latest={latest}'.format(
                 endpoint=self.endpoint,
                 oldest=kwargs.get('oldest'),
                 room_id=kwargs.get('room_id'),
