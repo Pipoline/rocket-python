@@ -80,7 +80,8 @@ class RocketChatAPI(object):
             **kwargs
         )
 
-    def get_room_history(self, room_id, oldest=None, latest=datetime.now(),inclusive=False, count=20,unreads=False, **kwargs):
+    def get_room_history(self, room_id, oldest=None, latest=datetime.now(),
+                        inclusive=False, count=20, unreads=False, **kwargs):
         """
         Get various history of specific channel/room
 
