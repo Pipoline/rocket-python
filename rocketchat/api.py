@@ -6,6 +6,7 @@ from rocketchat.calls.groups.get_private_room_info import GetPrivateRoomInfo
 from rocketchat.calls.channels.get_history import GetRoomHistory
 from rocketchat.calls.groups.get_private_room_history import GetPrivateRoomHistory
 from rocketchat.calls.auth.get_me import GetMe
+from datetime import datetime
 
 
 class RocketChatAPI(object):
@@ -79,7 +80,16 @@ class RocketChatAPI(object):
             **kwargs
         )
 
-    def get_room_history(self, room_id, oldest=None, **kwargs):
+    def get_room_history(
+                         self,
+                         room_id,
+                         oldest=None,
+                         latest=datetime.now(),
+                         inclusive=False,
+                         count=20,
+                         unreads=False,
+                         **kwargs
+                        ):
         """
         Get various history of specific channel/room
 
@@ -90,6 +100,10 @@ class RocketChatAPI(object):
         return GetRoomHistory(settings=self.settings, **kwargs).call(
             room_id=room_id,
             oldest=oldest,
+            latest=latest,
+            inclusive=inclusive,
+            count=count,
+            unreads=unreads,
             **kwargs
         )
 
