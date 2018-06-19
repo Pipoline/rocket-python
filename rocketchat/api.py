@@ -5,6 +5,8 @@ from rocketchat.calls.channels.get_room_info import GetRoomInfo
 from rocketchat.calls.groups.get_private_room_info import GetPrivateRoomInfo
 from rocketchat.calls.channels.get_history import GetRoomHistory
 from rocketchat.calls.groups.get_private_room_history import GetPrivateRoomHistory
+from rocketchat.calls.channels.create_public_room import CreatePublicRoom
+from rocketchat.calls.channels.delete_public_room import DeletePublicRoom
 from rocketchat.calls.auth.get_me import GetMe
 from datetime import datetime
 
@@ -106,6 +108,26 @@ class RocketChatAPI(object):
             unreads=unreads,
             **kwargs
         )
+
+    def create_public_room(self, name, **kwargs):
+        """
+        Create room with given name
+        :param name: Room name
+        :param kwargs:
+        members: The users to add to the channel when it is created. Optional; Ex.: ["rocket.cat"], Default: []
+        read_only: Set if the channel is read only or not. Optional; Ex.: True, Default: False
+        :return:
+        """
+        return CreatePublicRoom(settings=self.settings, **kwargs).call(name=name, **kwargs)
+
+    def delete_public_room(self, room_id, **kwargs):
+        """
+        Delete room with given ID
+        :param room_id: Room ID
+        :param kwargs:
+        :return:
+        """
+        return DeletePublicRoom(settings=self.settings, **kwargs).call(room_id=room_id, **kwargs)
 
     def get_my_info(self, **kwargs):
 

@@ -82,6 +82,40 @@ class GetUserListTestCase(APITestCase, unittest.TestCase):
         self.assertEqual(room_data['channel']['usernames'], ['testing', 'testing1', 'testing2'])
 
 
+class CreatePublicRoomTestCase(APITestCase, unittest.TestCase):
+
+    @mock.patch('rocketchat.calls.base.RocketChatBase.set_auth_token')
+    @mock.patch('rocketchat.calls.base.RocketChatBase.set_auth_headers')
+    @mock.patch('requests.Session.request')
+    def test_create_public_rooms(self, mock_request, set_auth_headers_mock, set_auth_mock):
+        set_auth_mock.return_value = None
+        set_auth_headers_mock.return_value = None
+
+        mock_response = mock.Mock()
+        mock_response.json.return_value = PUBLIC_ROOM_TEST
+
+        mock_request.return_value = mock_response
+
+        self.api.create_public_room('Test Room #2')
+
+
+class DeletePublicRoomTestCase(APITestCase, unittest.TestCase):
+
+    @mock.patch('rocketchat.calls.base.RocketChatBase.set_auth_token')
+    @mock.patch('rocketchat.calls.base.RocketChatBase.set_auth_headers')
+    @mock.patch('requests.Session.request')
+    def test_create_public_rooms(self, mock_request, set_auth_headers_mock, set_auth_mock):
+        set_auth_mock.return_value = None
+        set_auth_headers_mock.return_value = None
+
+        mock_response = mock.Mock()
+        mock_response.json.return_value = PUBLIC_ROOM_TEST
+
+        mock_request.return_value = mock_response
+
+        self.api.delete_public_room('123456')
+
+
 class GetMeTestCase(APITestCase, unittest.TestCase):
 
     @mock.patch('rocketchat.calls.base.RocketChatBase.set_auth_token')
