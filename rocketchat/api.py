@@ -8,6 +8,7 @@ from rocketchat.calls.groups.get_private_room_history import GetPrivateRoomHisto
 from rocketchat.calls.channels.create_public_room import CreatePublicRoom
 from rocketchat.calls.channels.delete_public_room import DeletePublicRoom
 from rocketchat.calls.auth.get_me import GetMe
+from rocketchat.calls.users.get_users import GetUsers
 from datetime import datetime
 
 
@@ -130,5 +131,12 @@ class RocketChatAPI(object):
         return DeletePublicRoom(settings=self.settings, **kwargs).call(room_id=room_id, **kwargs)
 
     def get_my_info(self, **kwargs):
-
         return GetMe(settings=self.settings, **kwargs).call(**kwargs)
+
+    def get_users(self, **kwargs):
+        """
+        Gets all of the users in the system and their information
+        :param kwargs:
+        :return:
+        """
+        return GetUsers(settings=self.settings, **kwargs).call(**kwargs)
