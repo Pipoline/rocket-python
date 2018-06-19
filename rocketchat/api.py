@@ -118,8 +118,10 @@ class RocketChatAPI(object):
         Create room with given name
         :param name: Room name
         :param kwargs:
-        members: The users to add to the channel when it is created. Optional; Ex.: ["rocket.cat"], Default: []
-        read_only: Set if the channel is read only or not. Optional; Ex.: True, Default: False
+        members: The users to add to the channel when it is created.
+            Optional; Ex.: ["rocket.cat"], Default: []
+        read_only: Set if the channel is read only or not.
+            Optional; Ex.: True, Default: False
         :return:
         """
         return CreatePublicRoom(settings=self.settings, **kwargs).call(name=name, **kwargs)
@@ -146,7 +148,8 @@ class RocketChatAPI(object):
 
     def get_user_info(self, user_id, **kwargs):
         """
-        Retrieves information about a user, the result is only limited to what the callee has access to view.
+        Retrieves information about a user,
+        the result is only limited to what the callee has access to view.
         :param user_id:
         :param kwargs:
         :return:
