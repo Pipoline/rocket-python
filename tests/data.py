@@ -90,3 +90,50 @@ GET_USERS_TEST = {
   "total": 10,
   "success": 'true'
 }
+
+GET_USER_INFO_TEST = {
+  "user": {
+    "_id": "nSYqWzZ4GsKTX4dyK",
+    "createdAt": "2016-12-07T15:47:46.861Z",
+    "services": {
+      "password": {
+        "bcrypt": "..."
+      },
+      "email": {
+        "verificationTokens": [
+          {
+            "token": "...",
+            "address": "example@example.com",
+            "when": "2016-12-07T15:47:46.930Z"
+          }
+        ]
+      },
+      "resume": {
+        "loginTokens": [
+          {
+            "when": "2016-12-07T15:47:47.334Z",
+            "hashedToken": "..."
+          }
+        ]
+      }
+    },
+    "emails": [
+      {
+        "address": "example@example.com",
+        "verified": 'true'
+      }
+    ],
+    "type": "user",
+    "status": "offline",
+    "active": 'true',
+    "roles": [
+      "user"
+    ],
+    "name": "Example User",
+    "lastLogin": "2016-12-08T00:22:15.167Z",
+    "statusConnection": "offline",
+    "utcOffset": 0,
+    "username": "example"
+  },
+  "success": 'true'
+}

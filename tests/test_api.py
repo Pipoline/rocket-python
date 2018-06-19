@@ -5,7 +5,7 @@ from rocketchat.api import RocketChatAPI
 from rocketchat.calls.chat.send_message import SendMessage
 
 
-from .data import PUBLIC_ROOM_TEST, GET_ROOM_INFO_TEST, GET_USERS_TEST, GET_ME_TEST
+from .data import PUBLIC_ROOM_TEST, GET_ROOM_INFO_TEST, GET_USERS_TEST, GET_USER_INFO_TEST, GET_ME_TEST
 
 
 class APITestCase(object):
@@ -154,3 +154,22 @@ class GetUsersTestCase(APITestCase, unittest.TestCase):
         self.assertEqual(users[0]['username'], 'example')
         self.assertEqual(users[0]['name'], 'Example User')
         self.assertEqual(users[0]['id'], 'nSYqWzZ4GsKTX4dyK')
+
+
+class GetUserInfoTestCase(APITestCase, unittest.TestCase):
+
+    @mock.patch('rocketchat.calls.base.RocketChatBase.set_auth_token')
+    @mock.patch('rocketchat.calls.base.RocketChatBase.set_auth_headers')
+    @mock.patch('requests.Session.request')
+    def test_get_room_info(self, mock_request, set_auth_headers_mock, set_auth_mock):
+        set_auth_mock.return_value = None
+        set_auth_headers_mock.return_value = None
+
+        mock_response = mock.Mock()
+        mock_response.json.return_value = GET_USER_INFO_TEST
+
+        mock_request.return_value = mock_response
+
+        room_data = self.api.get_user_info(user_id='nSYqWzZ4GsKTX4dyK')
+
+        self.assertEqual(room_data['user']['username'], 'example')

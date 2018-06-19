@@ -30,6 +30,8 @@ Initialize the client with a username and password.  This user *must* have Admin
     api.create_public_room('room_name', members=[], readOnly=bool)
     api.delete_public_room('room_id')
     api.get_my_info()
+    api.get_users()
+    api.get_user_info('user_id')
 
 check /rocketchat/calls/api.py for more.
 

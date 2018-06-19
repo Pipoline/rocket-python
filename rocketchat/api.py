@@ -9,6 +9,7 @@ from rocketchat.calls.channels.create_public_room import CreatePublicRoom
 from rocketchat.calls.channels.delete_public_room import DeletePublicRoom
 from rocketchat.calls.auth.get_me import GetMe
 from rocketchat.calls.users.get_users import GetUsers
+from rocketchat.calls.users.get_user_info import GetUserInfo
 from datetime import datetime
 
 
@@ -140,3 +141,15 @@ class RocketChatAPI(object):
         :return:
         """
         return GetUsers(settings=self.settings, **kwargs).call(**kwargs)
+
+    def get_user_info(self, user_id, **kwargs):
+        """
+        Retrieves information about a user, the result is only limited to what the callee has access to view.
+        :param user_id:
+        :param kwargs:
+        :return:
+        """
+        return GetUserInfo(settings=self.settings, **kwargs).call(
+            user_id=user_id,
+            **kwargs
+        )
