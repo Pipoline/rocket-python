@@ -92,7 +92,7 @@ class CreatePublicRoomTestCase(APITestCase, unittest.TestCase):
         set_auth_headers_mock.return_value = None
 
         mock_response = mock.Mock()
-        mock_response.json.return_value = PUBLIC_ROOM_TEST
+        mock_response.json.return_value = {}
 
         mock_request.return_value = mock_response
 
@@ -109,7 +109,7 @@ class DeletePublicRoomTestCase(APITestCase, unittest.TestCase):
         set_auth_headers_mock.return_value = None
 
         mock_response = mock.Mock()
-        mock_response.json.return_value = PUBLIC_ROOM_TEST
+        mock_response.json.return_value = {}
 
         mock_request.return_value = mock_response
 
@@ -173,3 +173,37 @@ class GetUserInfoTestCase(APITestCase, unittest.TestCase):
         room_data = self.api.get_user_info(user_id='nSYqWzZ4GsKTX4dyK')
 
         self.assertEqual(room_data['user']['username'], 'example')
+
+
+class CreateUserTestCase(APITestCase, unittest.TestCase):
+
+    @mock.patch('rocketchat.calls.base.RocketChatBase.set_auth_token')
+    @mock.patch('rocketchat.calls.base.RocketChatBase.set_auth_headers')
+    @mock.patch('requests.Session.request')
+    def test_create_public_rooms(self, mock_request, set_auth_headers_mock, set_auth_mock):
+        set_auth_mock.return_value = None
+        set_auth_headers_mock.return_value = None
+
+        mock_response = mock.Mock()
+        mock_response.json.return_value = {}
+
+        mock_request.return_value = mock_response
+
+        self.api.create_user('example@example.com', 'Example User', 'qwerty', 'example', active=True)
+
+
+class DeleteUserTestCase(APITestCase, unittest.TestCase):
+
+    @mock.patch('rocketchat.calls.base.RocketChatBase.set_auth_token')
+    @mock.patch('rocketchat.calls.base.RocketChatBase.set_auth_headers')
+    @mock.patch('requests.Session.request')
+    def test_create_public_rooms(self, mock_request, set_auth_headers_mock, set_auth_mock):
+        set_auth_mock.return_value = None
+        set_auth_headers_mock.return_value = None
+
+        mock_response = mock.Mock()
+        mock_response.json.return_value = {}
+
+        mock_request.return_value = mock_response
+
+        self.api.delete_user('123456')

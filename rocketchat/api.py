@@ -10,6 +10,8 @@ from rocketchat.calls.channels.delete_public_room import DeletePublicRoom
 from rocketchat.calls.auth.get_me import GetMe
 from rocketchat.calls.users.get_users import GetUsers
 from rocketchat.calls.users.get_user_info import GetUserInfo
+from rocketchat.calls.users.create_user import CreateUser
+from rocketchat.calls.users.delete_user import DeleteUser
 from datetime import datetime
 
 
@@ -153,3 +155,37 @@ class RocketChatAPI(object):
             user_id=user_id,
             **kwargs
         )
+
+    def create_user(self, email, name, password, username, **kwargs):
+        """
+        Create user
+        :param email: E-mail
+        :param name: Full name
+        :param password: Password
+        :param username: Username
+        :param kwargs:
+        active:
+        roles:
+        join_default_channels:
+        require_password_change:
+        send_welcome_email:
+        verified:
+        custom_fields:
+        :return:
+        """
+        return CreateUser(settings=self.settings, **kwargs).call(
+            email=email,
+            name=name,
+            password=password,
+            username=username,
+            **kwargs
+        )
+
+    def delete_user(self, user_id, **kwargs):
+        """
+        Delete user
+        :param user_id: User ID
+        :param kwargs:
+        :return:
+        """
+        return DeleteUser(settings=self.settings, **kwargs).call(user_id=user_id, **kwargs)
