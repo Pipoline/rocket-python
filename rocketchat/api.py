@@ -5,7 +5,13 @@ from rocketchat.calls.channels.get_room_info import GetRoomInfo
 from rocketchat.calls.groups.get_private_room_info import GetPrivateRoomInfo
 from rocketchat.calls.channels.get_history import GetRoomHistory
 from rocketchat.calls.groups.get_private_room_history import GetPrivateRoomHistory
+from rocketchat.calls.channels.create_public_room import CreatePublicRoom
+from rocketchat.calls.channels.delete_public_room import DeletePublicRoom
 from rocketchat.calls.auth.get_me import GetMe
+from rocketchat.calls.users.get_users import GetUsers
+from rocketchat.calls.users.get_user_info import GetUserInfo
+from rocketchat.calls.users.create_user import CreateUser
+from rocketchat.calls.users.delete_user import DeleteUser
 from datetime import datetime
 
 
@@ -107,6 +113,82 @@ class RocketChatAPI(object):
             **kwargs
         )
 
-    def get_my_info(self, **kwargs):
+    def create_public_room(self, name, **kwargs):
+        """
+        Create room with given name
+        :param name: Room name
+        :param kwargs:
+        members: The users to add to the channel when it is created.
+            Optional; Ex.: ["rocket.cat"], Default: []
+        read_only: Set if the channel is read only or not.
+            Optional; Ex.: True, Default: False
+        :return:
+        """
+        return CreatePublicRoom(settings=self.settings, **kwargs).call(name=name, **kwargs)
 
+    def delete_public_room(self, room_id, **kwargs):
+        """
+        Delete room with given ID
+        :param room_id: Room ID
+        :param kwargs:
+        :return:
+        """
+        return DeletePublicRoom(settings=self.settings, **kwargs).call(room_id=room_id, **kwargs)
+
+    def get_my_info(self, **kwargs):
         return GetMe(settings=self.settings, **kwargs).call(**kwargs)
+
+    def get_users(self, **kwargs):
+        """
+        Gets all of the users in the system and their information
+        :param kwargs:
+        :return:
+        """
+        return GetUsers(settings=self.settings, **kwargs).call(**kwargs)
+
+    def get_user_info(self, user_id, **kwargs):
+        """
+        Retrieves information about a user,
+        the result is only limited to what the callee has access to view.
+        :param user_id:
+        :param kwargs:
+        :return:
+        """
+        return GetUserInfo(settings=self.settings, **kwargs).call(
+            user_id=user_id,
+            **kwargs
+        )
+
+    def create_user(self, email, name, password, username, **kwargs):
+        """
+        Create user
+        :param email: E-mail
+        :param name: Full name
+        :param password: Password
+        :param username: Username
+        :param kwargs:
+        active:
+        roles:
+        join_default_channels:
+        require_password_change:
+        send_welcome_email:
+        verified:
+        custom_fields:
+        :return:
+        """
+        return CreateUser(settings=self.settings, **kwargs).call(
+            email=email,
+            name=name,
+            password=password,
+            username=username,
+            **kwargs
+        )
+
+    def delete_user(self, user_id, **kwargs):
+        """
+        Delete user
+        :param user_id: User ID
+        :param kwargs:
+        :return:
+        """
+        return DeleteUser(settings=self.settings, **kwargs).call(user_id=user_id, **kwargs)
