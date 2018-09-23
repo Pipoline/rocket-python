@@ -3,6 +3,7 @@ from rocketchat.calls.channels.get_public_rooms import GetPublicRooms
 from rocketchat.calls.groups.get_private_rooms import GetPrivateRooms
 from rocketchat.calls.channels.get_room_info import GetRoomInfo
 from rocketchat.calls.groups.get_private_room_info import GetPrivateRoomInfo
+from rocketchat.calls.groups.get_room_id import GetRoomId
 from rocketchat.calls.channels.get_history import GetRoomHistory
 from rocketchat.calls.groups.get_private_room_history import GetPrivateRoomHistory
 from rocketchat.calls.channels.create_public_room import CreatePublicRoom
@@ -12,6 +13,7 @@ from rocketchat.calls.users.get_users import GetUsers
 from rocketchat.calls.users.get_user_info import GetUserInfo
 from rocketchat.calls.users.create_user import CreateUser
 from rocketchat.calls.users.delete_user import DeleteUser
+from rocketchat.calls.groups.upload_file import UploadFile
 from datetime import datetime
 
 
@@ -73,6 +75,22 @@ class RocketChatAPI(object):
             **kwargs
         )
 
+    def upload_file(self, room_id, description, file, **kwargs):
+        """
+        Upload file to room
+        :param room_id:
+        :param description:
+        :param file:
+        :param kwargs:
+        :return:
+        """
+        return UploadFile(settings=self.settings, **kwargs).call(
+            room_id=room_id,
+            description=description,
+            file=file,
+            **kwargs
+        )
+
     def get_private_room_info(self, room_id, **kwargs):
         """
         Get various information about a specific private group
@@ -83,6 +101,18 @@ class RocketChatAPI(object):
         """
         return GetPrivateRoomInfo(settings=self.settings, **kwargs).call(
             room_id=room_id,
+            **kwargs
+        )
+
+    def get_room_id(self, room_name, **kwargs):
+        """
+        Get room ID
+        :param room_name:
+        :param kwargs:
+        :return:
+        """
+        return GetRoomId(settings=self.settings, **kwargs).call(
+            room_name=room_name,
             **kwargs
         )
 

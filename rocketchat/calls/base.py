@@ -13,6 +13,7 @@ class RocketChatBase(object):
     method = 'get'
     auth_token = None
     auth_user_id = None
+    files = None
 
     def __init__(self, settings=None, *args, **kwargs):
         self.settings = settings
@@ -66,6 +67,14 @@ class RocketChatBase(object):
 
         return None
 
+    def build_files(self, **kwargs):
+        """
+        Build files
+        :param kwargs:
+        :return:
+        """
+        return None
+
     def call(self, *args, **kwargs):
         """
 
@@ -82,13 +91,15 @@ class RocketChatBase(object):
 
         result = requests.request(method=self.method, url=url,
                                   data=self.build_payload(**kwargs),
-                                  headers=self.headers, timeout=timeout)
+                                  headers=self.headers, timeout=timeout,
+                                  files=self.build_files(**kwargs))
 
         request_data = {
             'url': url,
             'method': self.method,
             'payload': self.build_payload(**kwargs),
             'headers': self.headers,
+            'files': self.files
         }
 
         logger.debug('API Request - {request}'.format(
