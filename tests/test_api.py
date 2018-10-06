@@ -5,7 +5,7 @@ from rocketchat.api import RocketChatAPI
 from rocketchat.calls.chat.send_message import SendMessage
 
 
-from .data import PUBLIC_ROOM_TEST, GET_ROOM_INFO_TEST, GET_USERS_TEST, GET_USER_INFO_TEST, GET_ME_TEST
+from .data import PUBLIC_ROOM_TEST, GET_ROOM_INFO_TEST, GET_USERS_TEST, GET_USER_INFO_TEST, GET_ME_TEST, UPLOAD_FILE_TEST
 
 
 class APITestCase(object):
@@ -207,3 +207,24 @@ class DeleteUserTestCase(APITestCase, unittest.TestCase):
         mock_request.return_value = mock_response
 
         self.api.delete_user('123456')
+
+
+class UploadFileTestCase(APITestCase, unittest.TestCase):
+
+    @mock.patch('rocketchat.calls.base.RocketChatBase.set_auth_token')
+    @mock.patch('rocketchat.calls.base.RocketChatBase.set_auth_headers')
+    @mock.patch('requests.Session.request')
+    def test_upload_file(self, mock_request, set_auth_headers_mock, set_auth_mock):
+        set_auth_mock.return_value = None
+        set_auth_headers_mock.return_value = None
+
+        mock_response = mock.Mock()
+        mock_response.json.return_value = UPLOAD_FILE_TEST
+
+        mock_request.return_value = mock_response
+
+        self.api.upload_file(room_id='123',
+                             file="requirements.txt",
+                             description="File description",
+                             message="Example message")
+

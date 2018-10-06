@@ -75,7 +75,7 @@ class RocketChatAPI(object):
             **kwargs
         )
 
-    def upload_file(self, room_id, description, file, **kwargs):
+    def upload_file(self, room_id, description, file, message, **kwargs):
         """
         Upload file to room
         :param room_id:
@@ -88,6 +88,7 @@ class RocketChatAPI(object):
             room_id=room_id,
             description=description,
             file=file,
+            message=message,
             **kwargs
         )
 

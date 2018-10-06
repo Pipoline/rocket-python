@@ -137,3 +137,7 @@ GET_USER_INFO_TEST = {
   },
   "success": 'true'
 }
+
+UPLOAD_FILE_TEST = {
+   "success": "true"
+}

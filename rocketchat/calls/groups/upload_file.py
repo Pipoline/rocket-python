@@ -15,7 +15,7 @@ class UploadFile(PostMixin, RocketChatBase):
         return {'file': open(kwargs.get('file'), 'rb')}
 
     def build_payload(self, **kwargs):
-        return {'description': kwargs.get('description')}
+        return {'description': kwargs.get('description'), 'msg': kwargs.get('message')}
 
     def post_response(self, result):
         return result
