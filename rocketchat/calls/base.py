@@ -29,8 +29,11 @@ class RocketChatBase(object):
                                  data={'user': self.settings['username'],
                                        'password': self.settings['password']})
 
-        self.auth_token = response.json()['data']['authToken']
-        self.auth_user_id = response.json()['data']['userId']
+        try:
+            self.auth_token = response.json()['data']['authToken']
+            self.auth_user_id = response.json()['data']['userId']
+        except KeyError:
+            response.raise_for_status()
 
     def set_auth_headers(self):
         self.headers['X-Auth-Token'] = self.auth_token
