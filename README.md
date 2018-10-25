@@ -1,7 +1,5 @@
 #### RocketChat API
 
-> Looking For Authors!  This project is currently looking for a user to take it over.  If that sounds like you, send a note to derek at stegelman dot com or open up an issue in this repository.
-
 Python API wrapper for the [Rocket chat API](https://rocket.chat/docs/developer-guides/rest-api)
 
 [Documentation](http://rocket-python.readthedocs.io/en/latest/)
