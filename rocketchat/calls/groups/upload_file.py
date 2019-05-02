@@ -12,8 +12,8 @@ class UploadFile(PostMixin, RocketChatBase):
                                              room_id=kwargs.get('room_id'))
 
     def build_files(self, **kwargs):
-        return {'file': (kwargs.get('file'), 
-                         open(kwargs.get('file'), 'rb'), 
+        return {'file': (kwargs.get('file'),
+                         open(kwargs.get('file'), 'rb'),
                          kwargs.get('mime_type'))}
 
     def build_payload(self, **kwargs):
