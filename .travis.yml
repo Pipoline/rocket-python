@@ -2,7 +2,7 @@ language: python
 
 python:
   - "2.7"
-  - "3.4"
+  - "3.6"
 
 # command to install dependencies
 install:
@@ -12,3 +12,12 @@ install:
 
 script:
   - py.test tests rocketchat -x
+
+deploy:
+  provider: pypi
+  user: pipo
+  password:
+    secure: dK5RI162xNN/zfaL09UMbzZ6euqTEQQ8oBm5VMzPxWE6BPNnaFkfjEZSQMQ/7c/Bu7tgIO9f0RklrE4We7iFkOHwcGuFJVI1gMA/GJ55/2MEuUvDVddfv9zhQ52Lu8pCmFgIwe/rJNA9L7uPfeo767oVN+l1xiO08SHwikMwAowtH5M2IPNDQ4NnLIRfvT+SboTzJ2T0IVvijgSFIIH9Woo59kCKn2MK96NPHkawzB+nRsUu3rorGOdG1KNQr0SC8xhM2LJjXmhfPfiOMSqbubwosgW3GzqVGEh3HggWY9k2+DpYrV2COoYrqPeXnir7yCwWmWVXXtHR8l8hczK5CeO8k8iR4P/+qQTrI3U7NYa/pox5EvGB0smthpOiu/b3GNYO/c9DOY39VjgqQGuA1KzqbDkG14ZCm9w5RCWmiR8ETchrCexcyWKHUzjaFR9jrCZ7xe6MrRw/AmYKZxUP93VSxwrtmBRK9/krK0l4CeBakttLGp1CBLrc7TPDJO6lalA2xpxeLQCxB3AIbyO0Rib5//IcHcJCqGEjRaa9mvf5TyV3xXOy9udjAiCeIDQ9zdruSSQtVKJBLzrLhjOVTYQlcuvM7EFwdCXRuu8jnPYq9YWs/5pel26guswhJptl1/8H6aGUeCvboT3Cqb5RXelQYyckSgHa73z0GUK+eDI=
+  on:
+    tags: true
+  distributions: "bdist_wheel"
