@@ -20,3 +20,4 @@ deploy:
   on:
     tags: true
   distributions: bdist_wheel
+  skip_existing: true
