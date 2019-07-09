@@ -4,6 +4,7 @@ from rocketchat.calls.groups.get_private_rooms import GetPrivateRooms
 from rocketchat.calls.channels.get_room_info import GetRoomInfo
 from rocketchat.calls.groups.get_private_room_info import GetPrivateRoomInfo
 from rocketchat.calls.groups.get_room_id import GetRoomId
+from rocketchat.calls.groups.set_room_topic import SetRoomTopic
 from rocketchat.calls.channels.get_history import GetRoomHistory
 from rocketchat.calls.groups.get_private_room_history import GetPrivateRoomHistory
 from rocketchat.calls.channels.create_public_room import CreatePublicRoom
@@ -224,3 +225,10 @@ class RocketChatAPI(object):
         :return:
         """
         return DeleteUser(settings=self.settings, **kwargs).call(user_id=user_id, **kwargs)
+
+    def set_room_topic(self, room_id, topic, **kwargs):
+        return SetRoomTopic(settings=self.settings, **kwargs).call(
+            room_id=room_id,
+            topic=topic,
+            **kwargs
+        )
