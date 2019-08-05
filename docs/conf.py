@@ -54,8 +54,8 @@ master_doc = 'index'
 
 # General information about the project.
 project = u'Rocket Python'
-copyright = u'2017, Derek Stegelman'
-author = u'Derek Stegelman'
+copyright = "2017-2018, Derek Stegelman, 2018, Peter Gonda"
+author = u'Derek Stegelman, Peter Gonda'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the

@@ -2,7 +2,7 @@
 
 Python API wrapper for the [Rocket chat API](https://rocket.chat/docs/developer-guides/rest-api)
 
-[Documentation](http://rocket-python.readthedocs.io/en/latest/)
+[Documentation](http://docs.rocket-python.com)
 
 ![PyPI - Downloads](https://img.shields.io/pypi/dm/rocket-python)
 

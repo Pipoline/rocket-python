@@ -3,7 +3,8 @@ Licensing
 
 MIT License
 
-Copyright (c) 2016 - 2017 Derek Stegelman
+| Copyright (c) 2016 - 2018 Derek Stegelman
+| Copyright (c) 2018 Peter Gonda
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
