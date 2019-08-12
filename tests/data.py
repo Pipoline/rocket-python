@@ -141,3 +141,8 @@ GET_USER_INFO_TEST = {
 UPLOAD_FILE_TEST = {
    "success": "true"
 }
+
+SET_ROOM_TOPIC_TEST = {
+  "topic": "test topic",
+  "success": 'true'
+}
