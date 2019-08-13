@@ -7,6 +7,7 @@ Python API wrapper for the [Rocket chat API](https://rocket.chat/docs/developer-
 ![Travis (.org)](https://img.shields.io/travis/Pipoline/rocket-python)
 ![PyPI - Downloads](https://img.shields.io/pypi/dm/rocket-python)
 ![PyPI](https://img.shields.io/pypi/v/rocket-python)
+![Codecov](https://img.shields.io/codecov/c/github/Pipoline/rocket-python)
 
 #### Install
 
