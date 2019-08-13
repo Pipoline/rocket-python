@@ -10,7 +10,7 @@ install:
 # command to run tests
 
 script:
-  - py.test --cov rocketchat  --cov-report term tests rocketchat -x
+  - py.test --cov rocketchat  --cov-fail-under 85 --cov-report term tests rocketchat -x
 
 after_success:
   - codecov
