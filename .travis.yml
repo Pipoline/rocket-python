@@ -10,7 +10,10 @@ install:
 # command to run tests
 
 script:
-  - py.test tests rocketchat -x
+  - py.test --cov rocketchat  --cov-report term tests rocketchat -x
+
+after_success:
+  - codecov
 
 deploy:
   provider: pypi
