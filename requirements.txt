@@ -4,3 +4,4 @@ pytest-flakes==1.0.1
 pytest-sugar
 pytest-pep8==1.0.6
 mock==1.0.1
+pytest-coverage
