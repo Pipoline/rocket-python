@@ -5,7 +5,18 @@ from rocketchat.api import RocketChatAPI
 from rocketchat.calls.chat.send_message import SendMessage
 
 
-from .data import PUBLIC_ROOM_TEST, GET_ROOM_INFO_TEST, GET_USERS_TEST, GET_USER_INFO_TEST, GET_ME_TEST, UPLOAD_FILE_TEST, SET_ROOM_TOPIC_TEST
+from .data import (
+    PUBLIC_ROOM_TEST,
+    GET_ROOM_INFO_TEST,
+    GET_USERS_TEST,
+    GET_USER_INFO_TEST,
+    GET_ME_TEST,
+    UPLOAD_FILE_TEST,
+    SET_ROOM_TOPIC_TEST,
+    CREATE_IM_ROOM_TEST,
+    GET_IM_ROOMS_TEST,
+    GET_IM_HISTORY_TEST,
+)
 
 
 class APITestCase(object):
@@ -244,3 +255,67 @@ class SetRoomTopicTestCase(APITestCase, unittest.TestCase):
         mock_request.return_value = mock_response
 
         self.api.set_room_topic(room_id='123', topic='test topic')
+
+
+class CreateImRoomTestCase(APITestCase, unittest.TestCase):
+
+    @mock.patch('rocketchat.calls.base.RocketChatBase.set_auth_token')
+    @mock.patch('rocketchat.calls.base.RocketChatBase.set_auth_headers')
+    @mock.patch('requests.Session.request')
+    def test_get_im_rooms(self, mock_request, set_auth_headers_mock, set_auth_mock):
+        set_auth_mock.return_value = None
+        set_auth_headers_mock.return_value = None
+
+        mock_response = mock.Mock()
+        mock_response.json.return_value = CREATE_IM_ROOM_TEST
+
+        mock_request.return_value = mock_response
+
+        room = self.api.create_im_room(username="chat.user")
+
+        self.assertEqual(room['id'], 'Lymsiu4Mn6xjTAan4RtMDEYc28fQ5aHpf4')
+        self.assertEqual(room['username'], 'chat.user')
+
+
+class GetImRoomsTestCase(APITestCase, unittest.TestCase):
+
+    @mock.patch('rocketchat.calls.base.RocketChatBase.set_auth_token')
+    @mock.patch('rocketchat.calls.base.RocketChatBase.set_auth_headers')
+    @mock.patch('requests.Session.request')
+    def test_get_im_rooms(self, mock_request, set_auth_headers_mock, set_auth_mock):
+        set_auth_mock.return_value = None
+        set_auth_headers_mock.return_value = None
+
+        mock_response = mock.Mock()
+        mock_response.json.return_value = GET_IM_ROOMS_TEST
+
+        mock_request.return_value = mock_response
+
+        rooms = self.api.get_im_rooms()
+
+        self.assertEqual(rooms[0]['id'], 'RtycPC29hqLJfT9xjew28FnZqipDpvKw3R')
+        self.assertEqual(rooms[0]['username'], 'chat.user')
+        self.assertEqual(rooms[1]['id'], 'ew28FnZqipDpvKw3Rf2CAhYGtjS9iNZ7nd')
+        self.assertEqual(rooms[1]['username'], 'chat.user2')
+
+
+class GetImHistoryTestCase(APITestCase, unittest.TestCase):
+
+    @mock.patch('rocketchat.calls.base.RocketChatBase.set_auth_token')
+    @mock.patch('rocketchat.calls.base.RocketChatBase.set_auth_headers')
+    @mock.patch('requests.Session.request')
+    def test_get_im_history(self, mock_request, set_auth_headers_mock, set_auth_mock):
+        set_auth_mock.return_value = None
+        set_auth_headers_mock.return_value = None
+
+        mock_response = mock.Mock()
+        mock_response.json.return_value = GET_IM_HISTORY_TEST
+
+        mock_request.return_value = mock_response
+
+        messages = self.api.get_im_room_history(room_id='aabb')
+
+        self.assertEqual(messages[0]['id'], 'AkzpHAvZpdnuchw2a')
+        self.assertEqual(messages[0]['ts'], '2016-12-09T12:50:51.555Z')
+        self.assertEqual(messages[0]['user'], {'id': 'y65tAmHs93aDChMWu', 'username': 'testing'})
+        self.assertEqual(messages[0]['msg'], 'hi')
