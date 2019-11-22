@@ -15,6 +15,11 @@ from rocketchat.calls.users.get_user_info import GetUserInfo
 from rocketchat.calls.users.create_user import CreateUser
 from rocketchat.calls.users.delete_user import DeleteUser
 from rocketchat.calls.groups.upload_file import UploadFile
+from rocketchat.calls.im.create_room import CreateImRoom
+from rocketchat.calls.im.open_room import OpenImRoom
+from rocketchat.calls.im.close_room import CloseImRoom
+from rocketchat.calls.im.get_rooms import GetImRooms
+from rocketchat.calls.im.get_history import GetImRoomHistory
 from datetime import datetime
 
 
@@ -230,5 +235,76 @@ class RocketChatAPI(object):
         return SetRoomTopic(settings=self.settings, **kwargs).call(
             room_id=room_id,
             topic=topic,
+            **kwargs
+        )
+
+    def create_im_room(self, username, **kwargs):
+        """
+        Create direct message room with user
+
+        :param username:
+        :return:
+        """
+        return CreateImRoom(settings=self.settings, **kwargs).call(
+            username=username,
+            **kwargs
+        )
+
+    def open_im_room(self, room_id, **kwargs):
+        """
+        Open direct message room
+
+        :param room_id:
+        :return:
+        """
+        return OpenImRoom(settings=self.settings, **kwargs).call(
+            room_id=room_id,
+            **kwargs
+        )
+
+    def close_im_room(self, room_id, **kwargs):
+        """
+        Close direct message room
+
+        :param room_id:
+        :return:
+        """
+        return CloseImRoom(settings=self.settings, **kwargs).call(
+            room_id=room_id,
+            **kwargs
+        )
+
+    def get_im_rooms(self, **kwargs):
+        """
+        Get direct message rooms
+
+        :return:
+        """
+        return GetImRooms(settings=self.settings, **kwargs).call(**kwargs)
+
+    def get_im_room_history(
+                         self,
+                         room_id,
+                         oldest=None,
+                         latest=datetime.now(),
+                         inclusive=False,
+                         count=20,
+                         unreads=False,
+                         **kwargs
+                        ):
+        """
+        Get various history of specific direct message room
+
+        :param room_id:
+        :param kwargs:
+        :return:
+        """
+        return GetImRoomHistory(settings=self.settings, **kwargs).call(
+            room_id=room_id,
+            oldest=oldest,
+            latest=latest,
+            inclusive=inclusive,
+            count=count,
+            unreads=unreads,
             **kwargs
         )
