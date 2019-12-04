@@ -15,11 +15,15 @@ Python API wrapper for the [Rocket chat API](https://rocket.chat/docs/developer-
 
 #### Usage
 
-Initialize the client with a username and password.  This user *must* have Admin privs::
+Initialize the client with a username and password or token and user_id.
+This user *must* have Admin privs:
 
     from rocketchat.api import RocketChatAPI
 
     api = RocketChatAPI(settings={'username': 'someuser', 'password': 'somepassword',
+                                  'domain': 'https://myrockethchatdomain.com'})
+    # or
+    api = RocketChatAPI(settings={'token': 'sometoken', 'user_id': 'someuserid',
                                   'domain': 'https://myrockethchatdomain.com'})
 
 ##### Available Calls

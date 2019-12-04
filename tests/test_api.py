@@ -2,6 +2,7 @@ import unittest
 import mock
 
 from rocketchat.api import RocketChatAPI
+from rocketchat.calls.base import RocketChatBase
 from rocketchat.calls.chat.send_message import SendMessage
 
 
@@ -26,6 +27,17 @@ class APITestCase(object):
                          'password': 'something',
                          'domain': 'https://www.example.com'}
         self.api = RocketChatAPI(settings=self.settings)
+
+
+class TokenAuthTestCase(unittest.TestCase):
+    def test_token_auth_params(self):
+        settings = {'token': 'some_token',
+                    'user_id': 'some_id',
+                    'domain': 'https://www.example.com'}
+        api = RocketChatAPI(settings=settings)
+        base = RocketChatBase(settings=api.settings)
+        self.assertEqual(base.headers['X-Auth-Token'], 'some_token')
+        self.assertEqual(base.headers['X-User-Id'], 'some_id')
 
 
 class SendMessageTestCase(APITestCase, unittest.TestCase):

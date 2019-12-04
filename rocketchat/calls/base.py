@@ -23,6 +23,11 @@ class RocketChatBase(object):
         self.set_auth_headers()
 
     def set_auth_token(self):
+        if self.settings.get('token') and self.settings.get('user_id'):
+            self.auth_token = self.settings.get('token')
+            self.auth_user_id = self.settings.get('user_id')
+            return
+
         url = '{domain}/api/v1/login'.format(
             domain=self.settings['domain']
         )
