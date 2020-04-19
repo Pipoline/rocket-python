@@ -24,7 +24,7 @@ class CreateUser(PostMixin, RocketChatBase):
             'requirePasswordChange': kwargs.get('require_password_change', False),
             'sendWelcomeEmail': kwargs.get('send_welcome_email', False),
             'verified': kwargs.get('verified', False),
-            'customFields': kwargs.get('customFields')
+            'customFields': kwargs.get('customFields', {})
         })
 
     def post_response(self, result):
