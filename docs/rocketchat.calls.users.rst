@@ -21,7 +21,7 @@ rocketchat.calls.users.delete\_user module
    :show-inheritance:
 
 rocketchat.calls.users.get\_user\_id module
----------------------------------------------
+-------------------------------------------
 
 .. automodule:: rocketchat.calls.users.get_user_id
    :members:

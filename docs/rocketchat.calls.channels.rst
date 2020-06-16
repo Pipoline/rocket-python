@@ -37,7 +37,7 @@ rocketchat.calls.channels.get\_public\_rooms module
    :show-inheritance:
 
 rocketchat.calls.channels.get\_public\_room\_id module
-------------------------------------------------
+------------------------------------------------------
 
 .. automodule:: rocketchat.calls.channels.get_public_room_id
    :members:
