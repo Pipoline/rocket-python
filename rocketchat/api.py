@@ -4,6 +4,8 @@ from rocketchat.calls.groups.get_private_rooms import GetPrivateRooms
 from rocketchat.calls.channels.get_room_info import GetRoomInfo
 from rocketchat.calls.groups.get_private_room_info import GetPrivateRoomInfo
 from rocketchat.calls.groups.get_room_id import GetRoomId
+from rocketchat.calls.groups.get_public_room_id import GetPublicRoomId
+from rocketchat.calls.groups.get_user_id import GetUserId
 from rocketchat.calls.groups.set_room_topic import SetRoomTopic
 from rocketchat.calls.channels.get_history import GetRoomHistory
 from rocketchat.calls.groups.get_private_room_history import GetPrivateRoomHistory
@@ -114,13 +116,37 @@ class RocketChatAPI(object):
 
     def get_room_id(self, room_name, **kwargs):
         """
-        Get room ID
+        Get private room ID
         :param room_name:
         :param kwargs:
         :return:
         """
         return GetRoomId(settings=self.settings, **kwargs).call(
             room_name=room_name,
+            **kwargs
+        )
+
+    def get_public_room_id(self, room_name, **kwargs):
+        """
+        Get public room ID
+        :param room_name:
+        :param kwargs:
+        :return:
+        """
+        return GetPublicRoomId(settings=self.settings, **kwargs).call(
+            room_name=room_name,
+            **kwargs
+        )
+
+    def get_room_id(self, user_name, **kwargs):
+        """
+        Get user ID
+        :param user_name:
+        :param kwargs:
+        :return:
+        """
+        return GetUserId(settings=self.settings, **kwargs).call(
+            user_name=user_name,
             **kwargs
         )
 
