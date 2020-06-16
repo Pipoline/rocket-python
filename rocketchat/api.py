@@ -158,7 +158,7 @@ class RocketChatAPI(object):
             **kwargs
         )
 
-    def get_room_id(self, user_name, **kwargs):
+    def get_user_id(self, user_name, **kwargs):
         """
         Get user ID
         :param user_name:
