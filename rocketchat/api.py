@@ -17,6 +17,7 @@ from rocketchat.calls.users.get_user_info import GetUserInfo
 from rocketchat.calls.users.create_user import CreateUser
 from rocketchat.calls.users.delete_user import DeleteUser
 from rocketchat.calls.groups.upload_file import UploadFile
+from rocketchat.calls.groups.upload_remote_file import UploadRemoteFile
 from rocketchat.calls.im.create_room import CreateImRoom
 from rocketchat.calls.im.open_room import OpenImRoom
 from rocketchat.calls.im.close_room import CloseImRoom
@@ -97,6 +98,25 @@ class RocketChatAPI(object):
             description=description,
             file=file,
             message=message,
+            mime_type=mime_type,
+            **kwargs
+        )
+
+    def upload_remote_file(self, room_id, description, url, message, filename='Uploaded File', mime_type='text/plain', **kwargs):
+        """
+        Upload file to room
+        :param room_id:
+        :param description:
+        :param file:
+        :param kwargs:
+        :return:
+        """
+        return UploadFile(settings=self.settings, **kwargs).call(
+            room_id=room_id,
+            description=description,
+            url=url,
+            message=message,
+            filename=filename,
             mime_type=mime_type,
             **kwargs
         )

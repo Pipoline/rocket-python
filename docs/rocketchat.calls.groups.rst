@@ -44,6 +44,14 @@ rocketchat.calls.groups.upload\_file module
    :undoc-members:
    :show-inheritance:
 
+rocketchat.calls.groups.upload\_remote\_file module
+---------------------------------------------------
+
+.. automodule:: rocketchat.calls.groups.upload_remote_file
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 
 Module contents
 ---------------
