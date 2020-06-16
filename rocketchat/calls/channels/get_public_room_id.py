@@ -11,7 +11,7 @@ class GetPublicRoomId(RocketChatBase):
     def build_endpoint(self, **kwargs):
         return '{endpoint}?roomName={room_name}'.format(
             endpoint=self.endpoint,
-            room_id=kwargs.get('room_name')
+            room_name=kwargs.get('room_name')
         )
 
     def post_response(self, result):

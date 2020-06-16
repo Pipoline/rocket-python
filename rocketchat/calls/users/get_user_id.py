@@ -11,7 +11,7 @@ class GetUserId(RocketChatBase):
     def build_endpoint(self, **kwargs):
         return '{endpoint}?roomName={user_name}'.format(
             endpoint=self.endpoint,
-            room_id=kwargs.get('user_name')
+            user_name=kwargs.get('user_name')
         )
 
     def post_response(self, result):
