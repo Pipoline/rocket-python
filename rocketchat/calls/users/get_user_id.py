@@ -9,7 +9,7 @@ class GetUserId(RocketChatBase):
     endpoint = '/api/v1/users.info'
 
     def build_endpoint(self, **kwargs):
-        return '{endpoint}?roomName={user_name}'.format(
+        return '{endpoint}?username={user_name}'.format(
             endpoint=self.endpoint,
             user_name=kwargs.get('user_name')
         )
