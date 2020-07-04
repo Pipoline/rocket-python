@@ -16,7 +16,7 @@ Python API wrapper for the [Rocket chat API](https://rocket.chat/docs/developer-
 #### Usage
 
 Initialize the client with a username and password or token and user_id.
-This user *must* have Admin privs:
+Currently no 2FA is supported.
 
     from rocketchat.api import RocketChatAPI
 
@@ -118,7 +118,6 @@ check /rocketchat/calls/api.py for more.
 
 ##### Sending a message
 
-You'll first need to get the _id of the room you want to send a message to.  Currently, Rocket
-can only send messages to *public* rooms.
+You'll first need to get the `_id` of the room you want to send a message to.
 
     api.send_message('Your message', room_id)
