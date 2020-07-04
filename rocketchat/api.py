@@ -9,8 +9,11 @@ from rocketchat.calls.users.get_user_id import GetUserId
 from rocketchat.calls.groups.set_room_topic import SetRoomTopic
 from rocketchat.calls.channels.get_history import GetRoomHistory
 from rocketchat.calls.groups.get_private_room_history import GetPrivateRoomHistory
+from rocketchat.calls.groups.create_private_room import CreatePrivateRoom
 from rocketchat.calls.channels.create_public_room import CreatePublicRoom
 from rocketchat.calls.channels.delete_public_room import DeletePublicRoom
+from rocketchat.calls.groups.invite_private_room import InvitePrivateRoom
+from rocketchat.calls.channels.invite_public_room import InvitePublicRoom
 from rocketchat.calls.auth.get_me import GetMe
 from rocketchat.calls.users.get_users import GetUsers
 from rocketchat.calls.users.get_user_info import GetUserInfo
@@ -64,6 +67,19 @@ class RocketChatAPI(object):
             oldest=oldest,
             **kwargs
         )
+
+    def create_private_room(self, name, **kwargs):
+        """
+        Create group with given name
+        :param name: Room name
+        :param kwargs:
+        members: The users to add to the channel when it is created.
+            Optional; Ex.: ["rocket.cat"], Default: []
+        read_only: Set if the group is read only or not.
+            Optional; Ex.: True, Default: False
+        :return:
+        """
+        return CreatePrivateRoom(settings=self.settings, **kwargs).call(name=name, **kwargs)
 
     def get_public_rooms(self, **kwargs):
         """
@@ -218,6 +234,26 @@ class RocketChatAPI(object):
         :return:
         """
         return DeletePublicRoom(settings=self.settings, **kwargs).call(room_id=room_id, **kwargs)
+
+    def invite_private_room(self, room_id, user_id, **kwargs):
+        """
+        Invite user to group with given ID
+        :param room_id: Room ID
+        :param user_id: User ID
+        :param kwargs:
+        :return:
+        """
+        return InvitePrivateRoom(settings=self.settings, **kwargs).call(room_id=room_id, user_id=user_id **kwargs)
+
+    def invite_public_room(self, room_id, user_id, **kwargs):
+        """
+        Invite user to channel with given ID
+        :param room_id: Room ID
+        :param user_id: User ID
+        :param kwargs:
+        :return:
+        """
+        return InvitePublicRoom(settings=self.settings, **kwargs).call(room_id=room_id, user_id=user_id **kwargs)
 
     def get_my_info(self, **kwargs):
         return GetMe(settings=self.settings, **kwargs).call(**kwargs)

@@ -28,6 +28,14 @@ rocketchat.calls.channels.get\_history module
    :undoc-members:
    :show-inheritance:
 
+rocketchat.calls.channels.invite\_public\_room module
+---------------------------------------------
+
+.. automodule:: rocketchat.calls.channels.invite_public_room
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 rocketchat.calls.channels.get\_public\_rooms module
 ---------------------------------------------------
 
