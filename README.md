@@ -27,32 +27,21 @@ This user *must* have Admin privs:
                                   'domain': 'https://myrockethchatdomain.com'})
 
 ##### Available Calls
+
+###### Messages / Rooms general functions
     api.send_message('message', 'room_id')
     
-    api.get_private_rooms()
+    api.upload_file(room_id='room_id',
+                    file='file',
+                    description='File description',
+                    message='Example message')
     
-    api.get_private_room_history('room_id', oldest=date)
+    api.upload_remote_file(room_id='room_id',
+                    url='url',
+                    description='File description',
+                    message='Example message')
     
-    api.get_public_rooms()
-    
-    api.get_room_info('room_id')
-    
-    api.get_private_room_info('room_id')
-    
-    api.get_room_history('room_id')
-    
-    api.create_public_room('room_name', 
-                            members=[], 
-                            read_only=False)
-    
-    api.delete_public_room('room_id')
-    
-    api.get_my_info()
-    
-    api.get_users()
-    
-    api.get_user_info('user_id')
-    
+###### Users
     api.create_user('email', 
                     'name', 
                     'password', 
@@ -67,10 +56,59 @@ This user *must* have Admin privs:
                     
     api.delete_user('user_id')
     
-    api.upload_file(room_id='room_id',
-                    file='file',
-                    description='File description',
-                    message='Example message')
+    api.get_user_id('user_name')
+    
+    api.get_users()
+    
+    api.get_user_info('user_id')
+    
+    api.get_my_info()
+
+###### Direct Messages
+    api.create_im_room('username')
+    
+    api.close_room('room_id')
+    
+    api.open_room('room_id')
+    
+    api.get_im_room_history('room_id', oldest=date)
+    
+    api.get_im_rooms()
+
+###### Groups / Private Rooms
+    api.create_private_room('room_name', 
+                            members=[], 
+                            read_only=False)
+    
+    api.invite_private_room('room_id', 'user_id')
+    
+    api.get_private_rooms()
+    
+    api.get_private_room_history('room_id', oldest=date)
+    
+    api.get_room_id('room_name')
+    
+    api.get_private_room_info('room_id')
+    
+    api.set_room_topic('topic', 'room_id')
+
+###### Channels / Public Rooms
+    api.get_public_rooms()
+    
+    api.create_public_room('room_name', 
+                            members=[], 
+                            read_only=False)
+    
+    api.invite_public_room('room_id', 'user_id')
+    
+    api.get_room_info('room_id')
+    
+    api.get_public_room_id('room_name')
+    
+    api.get_room_history('room_id')
+    
+    api.delete_public_room('room_id')
+    
 
 check /rocketchat/calls/api.py for more.
 
