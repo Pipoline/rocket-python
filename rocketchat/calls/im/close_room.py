@@ -7,7 +7,7 @@ logger = logging.getLogger(__name__)
 
 
 class CloseImRoom(PostMixin, RocketChatBase):
-    endpoint = "/api/v1/im.create"
+    endpoint = "/api/v1/im.close"
 
     def build_endpoint(self, **kwargs):
         return self.endpoint
