@@ -21,10 +21,10 @@ This user *must* have Admin privs:
     from rocketchat.api import RocketChatAPI
 
     api = RocketChatAPI(settings={'username': 'someuser', 'password': 'somepassword',
-                                  'domain': 'https://myrockethchatdomain.com'})
+                                  'domain': 'https://myrocketchatdomain.com'})
     # or
     api = RocketChatAPI(settings={'token': 'sometoken', 'user_id': 'someuserid',
-                                  'domain': 'https://myrockethchatdomain.com'})
+                                  'domain': 'https://myrocketchatdomain.com'})
 
 ##### Available Calls
 
