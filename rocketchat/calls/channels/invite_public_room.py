@@ -6,7 +6,7 @@ from rocketchat.calls.base import PostMixin, RocketChatBase
 logger = logging.getLogger(__name__)
 
 
-class InvitePrivateRoom(PostMixin, RocketChatBase):
+class InvitePublicRoom(PostMixin, RocketChatBase):
     endpoint = '/api/v1/channels.invite'
 
     def build_endpoint(self, **kwargs):
