@@ -45,12 +45,6 @@ class RocketChatBase(object):
         self.headers['X-Auth-Token'] = self.auth_token
         self.headers['X-User-Id'] = self.auth_user_id
 
-    def logoff(self):
-        url = '{domain}/api/v1/logout'.format(
-            domain=self.settings['domain']
-        )
-        requests.get(url, headers=self.headers)
-
     def post_response(self, result):
         return result
 
@@ -115,7 +109,6 @@ class RocketChatBase(object):
         ))
 
         result.raise_for_status()
-        self.logoff()
 
         try:
             logger.debug('API Response - {data}'.format(
