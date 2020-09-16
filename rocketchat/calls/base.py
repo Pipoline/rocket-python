@@ -46,6 +46,9 @@ class RocketChatBase(object):
         self.headers['X-User-Id'] = self.auth_user_id
 
     def logoff(self):
+        if self.settings.get('token'):
+            return None
+
         url = '{domain}/api/v1/logout'.format(
             domain=self.settings['domain']
         )
