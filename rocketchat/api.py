@@ -10,6 +10,7 @@ from rocketchat.calls.groups.get_private_room_history import GetPrivateRoomHisto
 from rocketchat.calls.channels.create_public_room import CreatePublicRoom
 from rocketchat.calls.channels.delete_public_room import DeletePublicRoom
 from rocketchat.calls.auth.get_me import GetMe
+from rocketchat.calls.auth.logout import Logout
 from rocketchat.calls.users.get_users import GetUsers
 from rocketchat.calls.users.get_user_info import GetUserInfo
 from rocketchat.calls.users.create_user import CreateUser
@@ -308,3 +309,11 @@ class RocketChatAPI(object):
             unreads=unreads,
             **kwargs
         )
+
+    def logout(self, **kwargs):
+        """
+        Logout
+
+        :return:
+        """
+        return Logout(settings=self.settings, **kwargs).call(**kwargs)

@@ -259,3 +259,10 @@ GET_IM_HISTORY_TEST = {
   ],
   "success": True
 }
+
+LOGOUT_TEST = {
+   "status": "success",
+   "data": {
+     "message": "You've been logged out!"
+   }
+}
