@@ -5,7 +5,6 @@ from rocketchat.api import RocketChatAPI
 from rocketchat.calls.base import RocketChatBase
 from rocketchat.calls.chat.send_message import SendMessage
 
-
 from .data import (
     PUBLIC_ROOM_TEST,
     GET_ROOM_INFO_TEST,
@@ -17,6 +16,7 @@ from .data import (
     CREATE_IM_ROOM_TEST,
     GET_IM_ROOMS_TEST,
     GET_IM_HISTORY_TEST,
+    LOGOUT_TEST
 )
 
 
@@ -331,3 +331,21 @@ class GetImHistoryTestCase(APITestCase, unittest.TestCase):
         self.assertEqual(messages[0]['ts'], '2016-12-09T12:50:51.555Z')
         self.assertEqual(messages[0]['user'], {'id': 'y65tAmHs93aDChMWu', 'username': 'testing'})
         self.assertEqual(messages[0]['msg'], 'hi')
+
+
+class LogoutTestCase(APITestCase, unittest.TestCase):
+    @mock.patch('rocketchat.calls.base.RocketChatBase.set_auth_token')
+    @mock.patch('rocketchat.calls.base.RocketChatBase.set_auth_headers')
+    @mock.patch('requests.Session.request')
+    def test_logout(self, mock_request, set_auth_headers_mock, set_auth_mock):
+        set_auth_mock.return_value = None
+        set_auth_headers_mock.return_value = None
+
+        mock_response = mock.Mock()
+        mock_response.json.return_value = LOGOUT_TEST
+
+        mock_request.return_value = mock_response
+
+        log_out_response = self.api.logout()
+        self.assertEqual(log_out_response['status'], 'success')
+
