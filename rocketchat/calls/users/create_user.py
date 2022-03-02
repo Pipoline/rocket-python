@@ -13,7 +13,7 @@ class CreateUser(PostMixin, RocketChatBase):
         return self.endpoint
 
     def build_payload(self, **kwargs):
-        return json.dumps({
+        return {
             'email': kwargs.get('email'),
             'name': kwargs.get('name'),
             'password': kwargs.get('password'),
@@ -25,7 +25,7 @@ class CreateUser(PostMixin, RocketChatBase):
             'sendWelcomeEmail': kwargs.get('send_welcome_email', False),
             'verified': kwargs.get('verified', False),
             'customFields': kwargs.get('customFields', {})
-        })
+        }
 
     def post_response(self, result):
         return result
