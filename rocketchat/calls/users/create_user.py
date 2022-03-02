@@ -1,5 +1,4 @@
 import logging
-import json
 
 from rocketchat.calls.base import PostMixin, RocketChatBase
 
