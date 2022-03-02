@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 
 setup(name='rocket-python',
-      version='1.2.17',
+      version='1.2.18',
       description="RocketChat API with Python",
       long_description=open("README.md", "r").read(),
       long_description_content_type='text/markdown',
