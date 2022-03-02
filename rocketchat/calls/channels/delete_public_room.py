@@ -1,5 +1,4 @@
 import logging
-import json
 
 from rocketchat.calls.base import PostMixin, RocketChatBase
 
@@ -13,9 +12,9 @@ class DeletePublicRoom(PostMixin, RocketChatBase):
         return self.endpoint
 
     def build_payload(self, **kwargs):
-        return json.dumps({
+        return {
             'roomId': kwargs.get('room_id')
-        })
+        }
 
     def post_response(self, result):
         return result
