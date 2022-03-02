@@ -1,5 +1,4 @@
 import logging
-import json
 
 from rocketchat.calls.base import PostMixin, RocketChatBase
 
@@ -13,11 +12,11 @@ class CreatePublicRoom(PostMixin, RocketChatBase):
         return self.endpoint
 
     def build_payload(self, **kwargs):
-        return json.dumps({
+        return {
                 'name': kwargs.get('name'),
                 'members': kwargs.get('members', []),
                 'readOnly': kwargs.get('read_only', False)
-        })
+        }
 
     def post_response(self, result):
         return result

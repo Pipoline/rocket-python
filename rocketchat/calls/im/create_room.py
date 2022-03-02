@@ -1,4 +1,3 @@
-import json
 import logging
 
 from rocketchat.calls.base import PostMixin, RocketChatBase
@@ -13,7 +12,7 @@ class CreateImRoom(PostMixin, RocketChatBase):
         return self.endpoint
 
     def build_payload(self, **kwargs):
-        return json.dumps({"username": kwargs.get("username")})
+        return {"username": kwargs.get("username")}
 
     def post_response(self, result):
         try:
