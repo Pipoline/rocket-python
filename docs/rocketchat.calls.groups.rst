@@ -4,10 +4,26 @@ rocketchat.calls.groups package
 Submodules
 ----------
 
+rocketchat.calls.groups.create\_private\_room module
+----------------------------------------------------------
+
+.. automodule:: rocketchat.calls.groups.create_private_room
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 rocketchat.calls.groups.get\_private\_room\_history module
 ----------------------------------------------------------
 
 .. automodule:: rocketchat.calls.groups.get_private_room_history
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+rocketchat.calls.groups.invite\_private\_room module
+----------------------------------------------------------
+
+.. automodule:: rocketchat.calls.groups.invite_private_room
    :members:
    :undoc-members:
    :show-inheritance:
@@ -40,6 +56,14 @@ rocketchat.calls.groups.upload\_file module
 -------------------------------------------
 
 .. automodule:: rocketchat.calls.groups.upload_file
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+rocketchat.calls.groups.upload\_remote\_file module
+---------------------------------------------------
+
+.. automodule:: rocketchat.calls.groups.upload_remote_file
    :members:
    :undoc-members:
    :show-inheritance:
