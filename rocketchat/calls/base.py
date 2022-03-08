@@ -91,10 +91,19 @@ class RocketChatBase(object):
             endpoint=self.build_endpoint(**kwargs)
         )
 
-        result = requests.request(method=self.method, url=url,
-                                  data=self.build_payload(**kwargs),
-                                  headers=self.headers, timeout=timeout,
-                                  files=self.build_files(**kwargs))
+        files = self.build_files(**kwargs)
+
+        if files:
+            result = requests.request(method=self.method, url=url,
+                                      data=self.build_payload(**kwargs),
+                                      headers=self.headers, timeout=timeout,
+                                      files=files)
+        else:
+            result = requests.request(method=self.method, url=url,
+                                      json=self.build_payload(**kwargs),
+                                      headers=self.headers, timeout=timeout,
+                                      files=files)
+
 
         request_data = {
             'url': url,
