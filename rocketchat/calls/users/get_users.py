@@ -21,7 +21,7 @@ class GetUsers(RocketChatBase):
             for user in _users:
                 user_dict = dict()
                 user_dict['name'] = user.get('name')
-                user_dict['emails'] = [email['address'] for email in user.get('emails')]
+                user_dict['emails'] = [email['address'] for email in user.get('emails', [])]
                 user_dict['username'] = user.get('username')
                 user_dict['type'] = user.get('type')
                 user_dict['status'] = user.get('status')
