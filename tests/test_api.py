@@ -305,10 +305,8 @@ class GetImRoomsTestCase(APITestCase, unittest.TestCase):
 
         rooms = self.api.get_im_rooms()
 
-        self.assertEqual(rooms[0]['id'], 'RtycPC29hqLJfT9xjew28FnZqipDpvKw3R')
-        self.assertEqual(rooms[0]['username'], 'chat.user')
-        self.assertEqual(rooms[1]['id'], 'ew28FnZqipDpvKw3Rf2CAhYGtjS9iNZ7nd')
-        self.assertEqual(rooms[1]['username'], 'chat.user2')
+        self.assertEqual(rooms[0]['_id'], 'ew28FnZqipDpvKw3Rrocket.cat')
+        self.assertEqual(rooms[1]['_id'], 'RtycPC29hqLJfT9xjew28FnZqipDpvKw3R')
 
 
 class GetImHistoryTestCase(APITestCase, unittest.TestCase):
