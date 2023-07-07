@@ -1,3 +1,5 @@
+import mimetypes
+
 from rocketchat.calls.chat.send_message import SendMessage
 from rocketchat.calls.channels.get_public_rooms import GetPublicRooms
 from rocketchat.calls.groups.get_private_rooms import GetPrivateRooms
@@ -82,7 +84,7 @@ class RocketChatAPI(object):
             **kwargs
         )
 
-    def upload_file(self, room_id, description, file, message, mime_type='text/plain', **kwargs):
+    def upload_file(self, room_id, description, file, message, mime_type=None, **kwargs):
         """
         Upload file to room
         :param room_id:
@@ -91,6 +93,9 @@ class RocketChatAPI(object):
         :param kwargs:
         :return:
         """
+        if not mime_type:
+            mime_type = mimetypes.guess_type(file)[0]
+
         return UploadFile(settings=self.settings, **kwargs).call(
             room_id=room_id,
             description=description,
