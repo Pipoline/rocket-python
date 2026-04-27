@@ -3,6 +3,6 @@ pytest
 pytest-flakes
 pytest-sugar
 pytest-pep8
-mock>=1.0.1
+mock>=5.2.0
 pytest-coverage
 codecov
