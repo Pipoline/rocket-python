@@ -1,4 +1,4 @@
-requests>=2.0.0,<3.0
+requests>=2.34.0,<3.0
 pytest
 pytest-flakes
 pytest-sugar
