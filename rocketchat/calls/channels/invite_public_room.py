@@ -1,18 +1,22 @@
 import logging
+import json
 
 from rocketchat.calls.base import PostMixin, RocketChatBase
 
 logger = logging.getLogger(__name__)
 
 
-class CloseImRoom(PostMixin, RocketChatBase):
-    endpoint = "/api/v1/im.close"
+class InvitePublicRoom(PostMixin, RocketChatBase):
+    endpoint = '/api/v1/channels.invite'
 
     def build_endpoint(self, **kwargs):
         return self.endpoint
 
     def build_payload(self, **kwargs):
-        return {"roomId": kwargs.get("room_id")}
+        return json.dumps({
+                'roomId': kwargs.get('room_id'),
+                'userId': kwargs.get('user_id')
+        })
 
     def post_response(self, result):
         return result
